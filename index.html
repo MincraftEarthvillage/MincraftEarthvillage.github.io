@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html> -->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MC地球系列网页地图导航</title>
+		<link rel="stylesheet" href="./css/CSS效果.css"  media="screen and (min-width:1024px)"/>	
+		<link rel="stylesheet" href="./css/CSS效果手机.css"  media="screen and (max-width:1024px)"/>	
+		<link rel="icon" href="earth.png" type="">
+	</head>
+	<body>
+
+<div class="大背景">
+	<div class="页面顶部">
+		<h1>每个单元格都是预览窗口，可以单独操作</h1>
+		<p>点击下方小标题即可跳转到对应网页</p>
+	</div>
+	<div class="排序">
+		<div class="一个单元格">
+			<iframe src="http://earthvillage.top:53003/index.html"></iframe>
+			<div class="标题" onclick="openWebsite('http://earthvillage.top:53003/index.html')">地球村·交通线路图</div>
+		</div>
+		<div class="一个单元格">
+			<iframe src="http://earthvillage.top:53002/#world;flat;2743,64,-1831;2"></iframe>
+			<div class="标题" onclick="openWebsite('http://earthvillage.top:53002/')">地球村（1：1000）</div>
+		</div>
+		<div class="一个单元格">
+			<iframe src="http://mc2.snly.cc:36201/"></iframe>
+			<div class="标题" onclick="openWebsite('http://mc2.snly.cc:36201/')">元宇宙</div>
+		</div>
+		
+		<div class="一个单元格">
+			<iframe src="emc404.mysxl.cn"></iframe>
+			<div class="标题" onclick="emc404.mysxl.cn">联谊位招租</div>
+		</div>
+		
+	</div>
+	<!--
+	<div id="页面底部">
+		<h5>很简约？纯手打代码，没有套任何模板</h5>
+	</div>
+	-->
+</div>
+    <div class="音乐按钮">
+      <img src="play.png" alt="Play" id="play-pause">
+    </div>
+    
+  <audio id="music" autoplay>
+      <source src="./Minecraft经验升级_爱给网_aigei_com.mp3" type="audio/mpeg">
+    </audio>
+	
+<div class="按钮中队">
+	<div class="按钮小队">
+		<button onclick="openWebsite('http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=-hk56PRz-K7BI80NJUNIhNmcXjqoIjeF&authKey=rL45xGxWm7K868Xm%2Bew0jolXawNqhIfMI6PH%2BgNKC%2BSct2zfYW6xDFFO95JU%2FE%2Fc&noverify=0&group_code=638011512')">戳我加群（地球村——交通强服）</button>
+		<button onclick="openWebsite('https://emc.mysxl.cn')">访问地球村官网</button>
+	</div>
+</div>
+
+<!--脚本区-->
+<script>
+	
+	<!--控制跳转用的脚本 -->
+  function openWebsite(url) {
+    window.open(url, "_blank");
+  }
+  
+	
+	<!--音乐脚本-->
+  // 列表
+  var musicList = [
+	"./BGM/hea2t - 盛夏与蝉鸣.flac",
+    "./BGM/1_1_4_国旗入场音乐.wav",
+    // 在这里添加其他音乐文件的路径
+
+  ];
+  
+  var music = document.getElementById("music");
+  var playPause = document.getElementById("play-pause");
+  var 大背景 = document.querySelector(".大背景");
+
+  // 随机选择一首音乐
+<!--  function getRandomMusic() {
+    var index = Math.floor(Math.random() * musicList.length);
+    return musicList[index];
+  } -->
+  
+  window.addEventListener("load", function() {
+    // 进来时随机选择一首音乐，引用楼上↑
+    var randomMusic = getRandomMusic();
+    music.src = randomMusic;
+    music.play();
+	playPause.src = "pause.png";
+  });
+
+  // 点击按钮切换播放/暂停状态
+  playPause.addEventListener("click", function() {
+    if (music.paused) {
+      music.play();
+      playPause.src = "pause.png";
+    } else {
+      music.pause();
+      playPause.src = "play.png";
+    }
+  });
+  // 当音频播放结束时，随机选择下一首音乐并播放
+  music.addEventListener("ended", function() {
+    var randomMusic = getRandomMusic();
+    music.src = randomMusic;
+    music.play();
+  });
+  
+</script>
+	</body>
+</html>
