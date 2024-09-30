@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹窗示例</title>
+    <style>
+        #modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        #modalContent {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button:disabled {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="modal">
+    <div id="modalContent">
+        <p>协议</p>
+        <p>欢迎加入地球村服务器讨论群在这里，加入交流群后您可以与一同热爱MTR模组和生存的用户进行讨论。入群后请文明用语，尊重他人及遵守以下群规：<br>
+0.首先，管理员永远都是对的(doge)，其次，如果你觉得管理员犯错了，请参照第一条(doge)<br>
+1. 禁止破坏讨论环境，例如：广告引流、倒垃圾、宣泄负面情绪、辱骂引战造谣以及发送引起不适的图片、视频或聊天记录等行为，若被盗号可联系管理员<br>
+2.禁止谈论违法犯罪、敏感政治、色情及与宗教信仰等相关内容<br>
+3. 请不要在群里讨论心理健康或身体疾病有关的内容，这有可能会导致您获得错误的建议并造成严重伤害。<br>
+4. 禁止发送各种非法网站<br>
+5. 禁止恶意刷屏，恶意刷屏禁言2H起步<br>
+6.禁止政治反动言论，不利于复兴之路的言论禁言一天起步<br>
+7. 本群有QQ自带机器人和群主自己运营的机器人，恶意刷屏（每分钟发消息达到15条）将会被机器人自动禁言10分钟<br>
+8. 不会进服务器的欢迎询问Q群管家以及直接进官网查询<br>
+8.5-不要随意DDOS管理员！非必要情况不要@管理员发无意义信息（如专门@之后接一个标点符号或者仅表情）<br>
+9. 不要进群秒退，这样很可能会引起管理们的厌恶（多次进退将被拉入黑名单，无法进群，请珍惜账号机会)<br>
+10.服务器内请不要破坏任何建筑（尤其是花了很大精力来建的），被查证后将会被封禁24小时不等<br>
+11.由于网络安全法、国家安全法等规定，为维持祖国领土完整。禁止在使用王国功能占用地图内的“保留区块“。目前已有：中国区域，个人领地不受影响</p>
+        <button id="button1">不同意</button>
+        <button id="button2" disabled>等待 <span id="countdown">10</span> 秒后点击</button>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        document.getElementById('modal').style.display = 'flex';
+
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown');
+        const button2 = document.getElementById('button2');
+
+        const timer = setInterval(function() {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(timer);
+                button2.disabled = false;
+                button2.textContent = "同意"; // 修改按钮文本为“同意”
+                button2.onclick = function() {
+                    window.location.href = 'https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=-hk56PRz-K7BI80NJUNIhNmcXjqoIjeF&authKey=rL45xGxWm7K868Xm%2Bew0jolXawNqhIfMI6PH%2BgNKC%2BSct2zfYW6xDFFO95JU%2FE%2Fc&noverify=0&group_code=1035676547'; // 替换为你想跳转的链接
+                };
+            }
+        }, 1000);
+    };
+
+    document.getElementById('button1').onclick = function() {
+        alert('你因为不同意此协议，所以无法加入群聊，将跳转会官网');
+         window.location.href = 'ev.wusewang.xyz'; 
+    };
+</script>
+
+</body>
+</html>
