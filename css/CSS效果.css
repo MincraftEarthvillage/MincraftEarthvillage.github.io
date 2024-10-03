@@ -91,8 +91,8 @@ animation: 放大 2s ease-in-out forwards;
     grid-template-rows: repeat(2, 1fr);
     gap: 20px;
 	  /*这个地方一直不刷新我也不知道为什么*/
-    width: 100vh;
-	  /*我这边永远停留在80vh的效果*/
+    width: 120vh;
+	  /*👆我这边永远停留在100vh的效果*/
     height: 80vh;
 	position: absolute;
 	top:10%;
